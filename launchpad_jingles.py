@@ -61,12 +61,11 @@ def set_lights():
         x, y = button.split(',')
         name = jingle_mapping[button]
         if name in controls:
-            match name:
-                case "hold_mode":
-                    if button_hold_mode: lp.LedCtrlXY(int(x), int(y), 0, 3)
-                    else: lp.LedCtrlXY(int(x), int(y), 3, 0)
-                case "stop":
-                    lp.LedCtrlXY(int(x), int(y), 3, 0)
+            if name == "hold_mode":
+                if button_hold_mode: lp.LedCtrlXY(int(x), int(y), 0, 3)
+                else: lp.LedCtrlXY(int(x), int(y), 3, 0)
+            elif name == "stop":
+                lp.LedCtrlXY(int(x), int(y), 3, 0)
         elif name.find("(Dry)") == -1:
             lp.LedCtrlXY(int(x), int(y), 0, 3)
         else:
