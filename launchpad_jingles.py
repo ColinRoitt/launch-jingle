@@ -99,15 +99,14 @@ try:
             print(button_states)
             jingle = get_jingle_name(button_states[0], button_states[1])
             if jingle != "Button not mapped" and button_states[2] == True:
-                match jingle:
-                    case "hold_mode":
-                        button_hold_mode = not button_hold_mode
-                        set_lights()
-                    case "stop":
-                        pygame.mixer.music.stop()
-                    case _:
-                        print(jingle + " pressed!")
-                        play_mp3(jingle)
+                if jingle == "hold_mode":
+                    button_hold_mode = not button_hold_mode
+                    set_lights()
+                elif jingle == "stop":
+                    pygame.mixer.music.stop()
+                else:
+                    print(jingle + " pressed!")
+                    play_mp3(jingle)
             if button_hold_mode and button_states[2] == False:
                 pygame.mixer.music.stop()
             
