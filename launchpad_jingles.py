@@ -1,5 +1,8 @@
 import launchpad_py as launchpad
 import pygame
+import os
+
+PATH = os.getcwd()
 
 # Create a dictionary to map button numbers to jingle names
 jingle_mapping = {
@@ -48,7 +51,7 @@ def get_jingle_name(x, y):
 
 def play_mp3(audio_file_name):
     try:
-        pygame.mixer.music.load(f'Jingles/{audio_file_name}')
+        pygame.mixer.music.load(f'{PATH}/Jingles/{audio_file_name}')
         pygame.mixer.music.play()
     except pygame.error:
         # pass
