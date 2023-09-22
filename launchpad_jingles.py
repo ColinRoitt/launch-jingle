@@ -41,7 +41,8 @@ jingle_mapping = {
 
     # controls
     '8,4': 'hold_mode',
-    '8,1': 'stop'
+    '8,1': 'stop',
+    '8,8': 'end'
 }
 
 controls = ['hold_mode', 'stop']
@@ -69,6 +70,8 @@ def set_lights():
                 else: lp.LedCtrlXY(int(x), int(y), 3, 0)
             elif name == "stop":
                 lp.LedCtrlXY(int(x), int(y), 3, 0)
+            elif name == "end":
+                exit()
         elif name.find("(Dry)") == -1:
             lp.LedCtrlXY(int(x), int(y), 0, 3)
         else:
